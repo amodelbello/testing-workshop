@@ -36,6 +36,24 @@
 /*
 http://ws.kcd.im/?ws=Testing&e=basic%20react%20test&em=
 */
+import React from 'react'
+import ReactDOM from 'react-dom'
+import ItemList from '../item-list'
+
+describe('ItemList Suite', () => {
+  test('Renders `no items` with empty items prop', () => {
+    const div = document.createElement('div')
+    ReactDOM.render(<ItemList items={[]} />, div)
+    expect(div.textContent).toMatch('no items')
+  })
+  test('Renders <li> items when supplied with items', () => {
+    const div = document.createElement('div')
+    ReactDOM.render(<ItemList items={['apple', 'orange', 'pear']} />, div)
+    expect(div.textContent).toMatch('apple')
+    expect(div.textContent).toMatch('orange')
+    expect(div.textContent).toMatch('pear')
+  })
+})
 test.skip('I submitted my elaboration and feedback', () => {
   const submitted = false // change this when you've submitted!
   expect(submitted).toBe(true)
